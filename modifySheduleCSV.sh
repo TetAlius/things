@@ -6,7 +6,7 @@ if (( $# != 3 )); then
   	exit 1
 fi
 
-location="\"Escuela Universitaria de Ingeniería Informática, Calle Valdés Salas, Oviedo, Spain\""
+location="\"Escuela Universitaria de Ingeniería Informática, Calle Valdés Salas, Oviedo, Asturias, Spain\""
 hoursPerClass=2
 seminar=$(echo S.$3)
 
@@ -17,12 +17,13 @@ do
 	 else
 	if [ -n "$subject" ]; then
 		arr=($description)
-		classHour=$(echo "${arr[4]}")
-		if [[ $subject == *$seminar* ]]; then
-			classNumber=$(echo $classHour)
-		else
-			classNumber=$(echo $(($classHour / $hoursPerClass))) 
-		fi
+		classNumber=$(echo "${arr[4]}")
+	#	classHour=$(echo "${arr[4]}")
+	#	if [[ $subject == *$seminar* ]]; then
+	#		classNumber=$(echo $classHour)
+	#	else
+	#		classNumber=$(echo $(($classHour / $hoursPerClass))) 
+	#	fi
 		echo "$subject,$startDate,$startTime,$endDate,$endTime, Clase número $classNumber de $subject. Aula:$class,$location" >> $2	
 	fi
 fi
